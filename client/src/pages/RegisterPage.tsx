@@ -12,7 +12,6 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<{ name?: string; email?: string; password?: string }>({});
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const { isDark } = useTheme();
   const navigate = useNavigate();
 
   const validate = () => {

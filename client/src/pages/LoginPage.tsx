@@ -7,7 +7,6 @@ import { useTheme } from '../context/ThemeContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
-  const { isDark } = useTheme();
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
