@@ -58,3 +58,17 @@ export const deleteBoard = async (req: AuthRequest, res: Response): Promise<void
     res.status(500).json({ message: 'Error al eliminar tablero' });
   }
 };
+
+export const updateBoard = async (req: AuthRequest, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const { name } = req.body;
+  try {
+    const board = await prisma.board.update({
+      where: { id: Number(id) },
+      data: { name }
+    });
+    res.json(board);
+  } catch {
+    res.status(500).json({ message: 'Error al actualizar tablero' });
+  }
+};
