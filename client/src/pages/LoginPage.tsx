@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { sileo } from 'sileo';
 import api from '../services/api';
-import { useTheme } from '../context/ThemeContext';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
