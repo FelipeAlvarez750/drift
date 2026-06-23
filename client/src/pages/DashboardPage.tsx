@@ -188,8 +188,7 @@ export default function DashboardPage() {
   };
 
   // Alterna el estado completado de una tarea (tachar / destachar)
-  const toggleTask = async (taskId: number, columnId: number, completed: boolean) => {
-    try {
+const toggleTask = async (taskId: number, columnId: number, _completed: boolean) => {    try {
       const res = await api.patch(`/tasks/${taskId}/complete`);
       if (!selectedBoard) return;
       const updatedBoard = {
