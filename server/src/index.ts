@@ -20,7 +20,7 @@ app.use('/api/columns', columnRoutes);
 app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Drift API running 🚀' });
+  res.json({ message: 'Drift API running' });
 });
 
 app.listen(PORT, () => {
