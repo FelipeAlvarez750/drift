@@ -23,6 +23,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Drift API running' });
 });
 
+console.log('Starting server...');
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
