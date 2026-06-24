@@ -26,21 +26,13 @@ jobs:
           npm install
           npx prisma generate
           npm run build --if-present
-          
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: |
-            server
-            !server/src
-            !server/prisma
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: server
+          overwrite: true
 
   deploy:
     runs-on: ubuntu-latest
