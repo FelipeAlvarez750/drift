@@ -18,7 +18,7 @@ Es una aplicación de gestión de tareas estilo Kanban, construida con un stack 
 **Backend**
 - Node.js con Express y TypeScript
 - Prisma ORM v7
-- SQL Server
+- SQL Server (Azure SQL)
 - JSON Web Tokens (JWT)
 - bcryptjs
 
@@ -35,6 +35,16 @@ Es una aplicación de gestión de tareas estilo Kanban, construida con un stack 
 - Notificaciones con animaciones de física
 - Validación de formularios en el cliente
 - Confirmación antes de eliminar elementos
+
+---
+
+## Despliegue
+
+| Servicio | Plataforma |
+|----------|------------|
+| Frontend | Vercel |
+| Backend | Azure App Service |
+| Base de datos | Azure SQL Server |
 
 ---
 
@@ -63,8 +73,7 @@ drift/
 ### Requisitos previos
 
 - Node.js 18 o superior
-- SQL Server (Express o superior)
-- SQL Server Management Studio (opcional)
+- Acceso a la base de datos en Azure SQL Server (o SQL Server local)
 
 ### 1. Clonar el repositorio
 
@@ -83,21 +92,18 @@ npm install
 Crear el archivo `.env` en la carpeta `server/`:
 
 ```env
-DATABASE_URL="sqlserver://localhost:1433;database=drift_db;integratedSecurity=true;trustServerCertificate=true"
+DB_SERVER=drift-admin.database.windows.net
+DB_NAME=drift_db
+DB_USER=drift_admin
+DB_PASSWORD=tu_contraseña
+DATABASE_URL="sqlserver://drift-admin.database.windows.net:1433;database=drift_db;user=drift_admin;password=tu_contraseña;encrypt=true;trustServerCertificate=false"
 JWT_SECRET="drift_secret_key_2026"
 PORT=3001
 ```
 
-Crear la base de datos en SQL Server:
-
-```sql
-CREATE DATABASE drift_db;
-```
-
-Ejecutar las migraciones:
+Generar el cliente de Prisma:
 
 ```bash
-npx prisma migrate dev
 npx prisma generate
 ```
 
@@ -113,6 +119,12 @@ npm run dev
 cd ../client
 npm install
 npm run dev
+```
+
+Crear el archivo `.env` en la carpeta `client/`:
+
+```env
+VITE_API_URL=http://localhost:3001/api
 ```
 
 La aplicación estará disponible en `http://localhost:5173`.

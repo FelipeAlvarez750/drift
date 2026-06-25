@@ -1,5 +1,11 @@
+
+import 'dotenv/config';
+
 import { PrismaClient } from '../generated/prisma';
 import { PrismaMssql } from '@prisma/adapter-mssql';
+
+console.log('DB_SERVER:', process.env.DB_SERVER);
+console.log('DB_NAME:', process.env.DB_NAME);
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 

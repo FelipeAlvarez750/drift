@@ -263,7 +263,7 @@ const toggleTask = async (taskId: number, columnId: number, _completed: boolean)
               sileo.action({
                 title: '¿Cerrar sesión?',
                 description: 'Se cerrará tu sesión actual',
-                fill: '#5c54c5',
+                fill: '#ffffff',
                 button: { title: 'Salir', onClick: logout },
               });
             }}
